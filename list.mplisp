@@ -1,3 +1,4 @@
+; vim: syntax=mplisp
 ; Milan Suk 2018
 ; list package
 
@@ -8,9 +9,9 @@
         (apply or? (map (lambda (x) (== val x)) l))))
 
 ;TEST
-;(def l (list 1 2))
-;
-;(assert! (in-list l 1))
-;(assert! (in-list l 2))
-;(assert! (not? (in-list l 3)))
+(def l (list 1 2))
+
+(assert! (in-list l 1))
+(assert! (in-list l 2))
+(assert! (not? (in-list l 3)))
 ;/TEST

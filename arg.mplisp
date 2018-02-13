@@ -1,7 +1,11 @@
+; vim: syntax=mplisp
 ; Milan Suk 2018
 ; arg package
 
 ; arguments
 (def arg-list (slice (get-attribute (import "sys") "argv") 2))
 
-(apply + (map (lambda (x) (->int x)) arg-list))
+(def get-param
+    (lambda (val)
+        (let ((get (lambda (last count)
+                        ()))))))

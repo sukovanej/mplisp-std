@@ -1,0 +1,39 @@
+; vim: syntax=mplisp
+; Milan Suk 2018
+; string package
+
+; get string length
+; Usage: (str-len {string})
+
+(import "list")
+
+(def str-len
+    (lambda (str)
+        (if (== str "") 
+            0 
+            (apply + (map (lambda (x) 1) str)))))
+
+; TESTS
+(assert-equal! (str-len "ahoj") 4)
+(assert-equal! (str-len "") 0)
+; /TESTS
+
+; check whether {str} contains {substr}
+; Usage: (str-contains {string} {substring})
+(def str-contains
+    (lambda (str substr)
+        (let* (
+            (len (str-len substr))
+            (sublists (map 
+                (lambda (x) (slice str x len)) 
+                (range (- (str-len str) (- len 1))))))
+        (in-list sublists substr))))
+
+
+; TESTS
+(assert! (str-contains "ahoj" "a"))
+(assert! (str-contains "ahoj" "ah"))
+(assert! (str-contains "ahoj" "aho"))
+(assert! (str-contains "ahoj" "ahoj"))
+(assert! (not? (str-contains "ahoj" "ahojj")))
+; /TESTS
