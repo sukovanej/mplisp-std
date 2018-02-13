@@ -7,5 +7,7 @@
 
 (def get-param
     (lambda (val)
-        (let ((get (lambda (last count)
-                        ()))))))
+        (let (
+            (get (lambda 
+                (index count)
+                    (

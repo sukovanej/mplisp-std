@@ -27,7 +27,7 @@
             (sublists (map 
                 (lambda (x) (slice str x len)) 
                 (range (- (str-len str) (- len 1))))))
-        (in-list sublists substr))))
+        (list-in sublists substr))))
 
 
 ; TESTS

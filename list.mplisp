@@ -4,7 +4,7 @@
 
 ; Check whether the {value} is in the {list}
 ; Usage: (in-list {list} {value})
-(def in-list
+(def list-in
     (lambda (l val)
         (apply or? (map (lambda (x) (== val x)) l))))
 
@@ -15,3 +15,9 @@
 (assert! (in-list l 2))
 (assert! (not? (in-list l 3)))
 ;/TEST
+
+; Get index of element in list
+(def list-get-index
+    (lambda (l val)
+        (
+    
