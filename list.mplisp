@@ -1,0 +1,16 @@
+; Milan Suk 2018
+; list package
+
+; Check whether the {value} is in the {list}
+; Usage: (in-list {list} {value})
+(def in-list
+    (lambda (l val)
+        (apply or? (map (lambda (x) (== val x)) l))))
+
+;TEST
+;(def l (list 1 2))
+;
+;(assert! (in-list l 1))
+;(assert! (in-list l 2))
+;(assert! (not? (in-list l 3)))
+;/TEST
