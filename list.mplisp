@@ -2,22 +2,48 @@
 ; Milan Suk 2018
 ; list package
 
+
+; Get list length
+
+(def list-len
+    (lambda (l)
+        (if (== l "") 
+            0 
+            (apply + (map (lambda (x) 1) l)))))
+
+; TESTS
+(assert-equal! (list-len `(1 2 3 4)) 4)
+(assert-equal! (list-len `(1 2 4)) 3)
+; /TESTS
+
+
 ; Check whether the {value} is in the {list}
-; Usage: (in-list {list} {value})
+; Usage: (list-in {list} {value})
 (def list-in
     (lambda (l val)
         (apply or? (map (lambda (x) (== val x)) l))))
 
-;TEST
-(def l (list 1 2))
+; TEST
+(assert! (list-in (list 1 2) 1))
+(assert! (list-in (list 1 2) 2))
+(assert! (not? (list-in (list 1 2) 3)))
+; /TEST
 
-(assert! (in-list l 1))
-(assert! (in-list l 2))
-(assert! (not? (in-list l 3)))
-;/TEST
+
+; Zip two lists
+(def list-zip
+    (lambda (l1 l2)
+        (if (!= (list-len l1) (list-len l2)) 
+            #f
+            (map 
+                (lambda (x) (list (list-ref l1 x) (list-ref l2 x))) 
+                (range (list-len l1))))))
+            
+; TEST
+(assert-equal! (list-zip (list 1 2) (list 3 4)) (list (list 1 3) (list 2 4)))
 
 ; Get index of element in list
 (def list-get-index
     (lambda (l val)
-        (
+        ()))
     
