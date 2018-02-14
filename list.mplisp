@@ -1,6 +1,7 @@
 ; vim: syntax=mplisp
 ; Milan Suk 2018
 ; list package
+; provides basic list functions
 
 
 ; Get list length
@@ -31,6 +32,7 @@
 
 
 ; Zip two lists
+; Usage: (list-zip {list1} {list2}) -> (({list1[0]} {list2[0]}) ...)
 (def list-zip
     (lambda (l1 l2)
         (if (!= (list-len l1) (list-len l2)) 
@@ -45,6 +47,7 @@
 ; /TESTS
 
 ; Get index of element in list
+; Usage: (list-get-index {list} {value}) -> ({index1} {index2} ...)
 (def list-get-index
     (lambda (l val)
         (let* ( 
@@ -58,4 +61,6 @@
 (assert-equal! (list-get-index `(1 2 3 2 4) 1) `(0))
 (assert-equal! (list-get-index `(1 2 3 2 4) 2) `(1 3))
 (assert-equal! (list-get-index `(1 2 3 2 4) 3) `(2))
+(assert-equal! (list-get-index `(1 2 3 2 4) 4) `(4))
+(assert-equal! (list-get-index `(1 2 3 2 4) 5) `())
 ; /TESTS
